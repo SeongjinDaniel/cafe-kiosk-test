@@ -55,3 +55,15 @@ AssertJ : https://joel-costigliola.github.io/assertj/index.html
 - Then: 시나리오 진행에 대한 결과 명시, 검증
   - 어떤 상태 변화가 일어난다
 **DisplayName에 명확하게 작성할 수 있다**
+
+### Layered Architechture
+user -> Presentation Layer Business Layer -> Persistence Layer -> DB
+     <-                                   <-                   <-
+- **관심사 분리** 및 책임을 나누기 위해서 레이어드 아키텍처를 구현한다
+- 테스트 하기 복잡해 보인다????
+
+### 통합 테스트
+- 여러 모듈이 협력하는 기능을 통합적으로 검증하는 테스트
+- 일반적으로 작은 범위의 단위 테스트만으로는 기능 전체의 신뢰성을 보장할 수 없다.
+- 풍부한 단위 테스트 & 큰 기능 단위를 검증하는 통합 테스트
+
