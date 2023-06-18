@@ -55,3 +55,10 @@ AssertJ : https://joel-costigliola.github.io/assertj/index.html
 - Then: 시나리오 진행에 대한 결과 명시, 검증
   - 어떤 상태 변화가 일어난다
 **DisplayName에 명확하게 작성할 수 있다**
+
+### 키워드 정리
+- @DisplayName - 도메인 정책, 용어를 사용한 명확한 문장
+- Given / When / Then - 주어진 환경, 행동, 상태 변화
+- TDD vs. BDD
+- JUnit vs. Spock(Groovy 언어 테스트)
+**언어가 사고를 제한한다.** **문서로서의 테스트를 작성하는 것을 추천한다.**
