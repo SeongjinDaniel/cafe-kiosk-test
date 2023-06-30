@@ -74,3 +74,10 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
 - 일반적으로 작은 범위의 단위 테스트만으로는 기능 전체의 신뢰성을 보장할 수 없다.
 - 풍부한 단위 테스트 & 큰 기능 단위를 검증하는 통합 테스트
 
+### h2 db 연결 참고
+- 첫 연결시에 사용
+  - jdbc:h2:mem:~/cafeKioskApplication
+- 아래 와같이 사용해야함
+  - jdbc:h2:tcp://localhost/~/cafeKioskApplication  <-- network 모드로 연결
+
+
