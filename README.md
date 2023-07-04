@@ -74,10 +74,14 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
 - 일반적으로 작은 범위의 단위 테스트만으로는 기능 전체의 신뢰성을 보장할 수 없다.
 - 풍부한 단위 테스트 & 큰 기능 단위를 검증하는 통합 테스트
 
+### 요구사항
+- 키오스크 주문을 위한 상품 후보 리스트 조회하기
+- 상품의 판매 상태: 판매중, 판매보류, 판매중지
+  - 판매중, 판매보류인 상태의 상품을 화면에 보여준다
+- id, 상품 번호, 상품 타입, 판매 상태, 상품 이름, 가격
+
 ### h2 db 연결 참고
 - 첫 연결시에 사용
   - jdbc:h2:mem:~/cafeKioskApplication
 - 아래 와같이 사용해야함
   - jdbc:h2:tcp://localhost/~/cafeKioskApplication  <-- network 모드로 연결
-
-
