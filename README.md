@@ -85,3 +85,15 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
   - jdbc:h2:mem:~/cafeKioskApplication
 - 아래 와같이 사용해야함
   - jdbc:h2:tcp://localhost/~/cafeKioskApplication  <-- network 모드로 연결
+
+### Persistence Layer
+- Data Access의 역할
+- 비즈니스 가공 로직이 포함되어서는 안 된다.
+- Data에 대한 CRUD에만 집중한 레이어
+- **트랜잭션**을 보장해야 한다.
+
+### 요구사항
+- 상품 번호 리스트를 받아 주문 생성하기
+- 주문은 주문 상태, 주문 등록 시간을 가진다.
+- 주문의 총 금액을 계산할 수 있어야 한다.
+
