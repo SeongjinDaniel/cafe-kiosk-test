@@ -101,3 +101,9 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
 - 재고는 상품번호를 가진다.
 - 재고와 관련 있는 상품 타입은 병 음료, 베이커리이다.
 
+###  Presentation Layer
+- 외부 세계의 요청을 가장 먼저 받는 계층
+- 파라미터에 대한 최소한의 검증을 수행한다.
+
+### MockMvc
+- Mock(가짜) 객체를 사용해 스프링 MVC 동작을 재현할 수 있는 테스트 프레임워크
