@@ -111,3 +111,13 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
 ### 요구사항
 - 관리자 페이지에서 신규 상품을 등록할 수 있다.
 - 상품명, 상품 타입, 판매 상태, 가격 등을 입력받는다.
+
+
+### 키워드 정리
+
+- Layered Architechture
+- **Hexagonal Architecture**
+- 단위 테스트 vs. 통합 테스트
+- IoC, DI, AOP
+- ORM, 패러다임의 불일치, Hibernate
+- Spring Data JPA
