@@ -121,3 +121,17 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
 - IoC, DI, AOP
 - ORM, 패러다임의 불일치, Hibernate
 - Spring Data JPA
+
+<img width="723" alt="image" src="https://github.com/SeongjinOliver/mytube/assets/55625864/66fb3155-f3f8-457e-b541-9b0107dbbb62">
+
+- @SpringBootTest vs. @DataJpaTest
+- @SpringBootTest vs. @WebMvcTest
+- @Transactional (readOnly = true)
+- Optimistic Lock, Pessimistic Lock
+- CQRS
+- RestControllerAdvice, @ExceptionHandler
+- Spring bean validation
+  - @NotNull, @NotEmpty, @NotBlank, ...
+  - @WebMvcTest
+  - @ObjectMapper
+  - Mock, Mockito, @MockBean
