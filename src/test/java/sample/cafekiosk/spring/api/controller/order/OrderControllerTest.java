@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import sample.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import sample.cafekiosk.spring.api.controller.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.api.service.order.OrderService;
 
 import java.util.List;
@@ -34,7 +34,7 @@ class OrderControllerTest {
     @Test
     void createProduct() throws Exception {
         // given
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
             .productNumbers(List.of("001"))
             .build();
 
@@ -56,7 +56,7 @@ class OrderControllerTest {
     @Test
     void createOrderWithEmptyProductNumbers() throws Exception {
         // given
-        OrderCreateRequest request = OrderCreateRequest.builder()
+        OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
             .productNumbers(List.of())
             .build();
 
