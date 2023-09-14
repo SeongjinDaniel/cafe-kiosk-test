@@ -23,7 +23,7 @@ public class OrderStatisticsService {
     private final MailService mailService;
 
     public boolean sendOrderStatisticsMail(LocalDate orderDate, String email) {
-        // 하당 일자에 결제완료된 주문들을 가져와서
+        // 해당 일자에 결제완료된 주문들을 가져와서
         List<Order> orders = orderRepository.findOrdersBy(
             orderDate.atStartOfDay(),
             orderDate.plusDays(1).atStartOfDay(),
