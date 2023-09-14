@@ -135,3 +135,19 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
   - @WebMvcTest
   - @ObjectMapper
   - Mock, Mockito, @MockBean
+
+# Test Double
+- Stunt Double : 영화에서 대역
+- 참고
+  - https://martinfowler.com/articles/mocksArentStubs.html
+    - Test Double의 5가지 종류
+      - Dummy
+        - 아무것도 하지 않는 깡통 객체
+      - Fake
+        - 단순한 형태로 동일한 기능은 수행하나, 프로덕션에서 쓰기에는 부족한 객체 (ex. FakeRepository)
+      - Stub -> 상태 검증 (State Verification)
+        - 테스트에서 요청한 것에 대해 미리 준비한 결과를 제공하는 객체 그외에는 응답하지 않는다.
+      - Spy 
+        - Stub이면서 호출된 내용을 기록하여 보여줄 수 있는 객체, 일부는 실제 객체처럼 동작히키고 일부만 Stubbing할 수 있다.
+      - Mock -> 행위 검증 (Behavior Verification)
+        - 행위에 대한 기대를 명세하고, 그에 따라 동작하도록 만들어진 객체
