@@ -151,3 +151,10 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
         - Stub이면서 호출된 내용을 기록하여 보여줄 수 있는 객체, 일부는 실제 객체처럼 동작히키고 일부만 Stubbing할 수 있다.
       - Mock -> 행위 검증 (Behavior Verification)
         - 행위에 대한 기대를 명세하고, 그에 따라 동작하도록 만들어진 객체
+
+- 키워드 정리
+  - Test Double, Stubbing
+    - dummy, fake, stub, spy, mock
+  - @Mock, @MockBean, @Spy, @SpyBean, @InjectMocks
+  - BDDMockito
+  - Classicist VS. Mockist
