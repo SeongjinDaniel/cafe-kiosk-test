@@ -4,8 +4,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,10 +22,8 @@ import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
  * JPA관련된 빈들만 주입을 해줘서 서버를 띄워줘서 속도가 빠르다
  * 그러나 SpringBootTest를 더 선호한다
  */
-//@SpringBootTest
-@ActiveProfiles("test")
-@DataJpaTest
-class ProductRepositoryTest {
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;

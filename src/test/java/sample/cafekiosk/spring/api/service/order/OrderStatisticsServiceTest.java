@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.client.mail.MailSendClient;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistory;
 import sample.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
@@ -29,8 +30,7 @@ import static org.mockito.Mockito.*;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-@SpringBootTest
-class OrderStatisticsServiceTest {
+class OrderStatisticsServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderStatisticsService orderStatisticsService;
@@ -47,9 +47,6 @@ class OrderStatisticsServiceTest {
     @Autowired
     private MailSendHistoryRepository mailSendHistoryRepository;
 
-    @MockBean
-    private MailSendClient mailSendClient;
-
     @AfterEach
     void tearDown() {
         orderProductRepository.deleteAllInBatch();
@@ -58,7 +55,7 @@ class OrderStatisticsServiceTest {
         mailSendHistoryRepository.deleteAllInBatch();
     }
 
-    @DisplayName("결제완료 주문들을 조회하여 매출 통계 매일을 전송한다.")
+    @DisplayName("결제완료 주문들을 조회하여 매출 통계 메일을 전송한다.")
     @Test
     void sendOrderStatisticsMail() {
         // given
@@ -77,7 +74,7 @@ class OrderStatisticsServiceTest {
 
         // stubbing
         when(mailSendClient.sendEmail(any(String.class), any(String.class), any(String.class), any(String.class)))
-                .thenReturn(true);
+            .thenReturn(true);
 
         // when
         boolean result = orderStatisticsService.sendOrderStatisticsMail(LocalDate.of(2023, 3, 5), "test@test.com");
@@ -87,8 +84,8 @@ class OrderStatisticsServiceTest {
 
         List<MailSendHistory> histories = mailSendHistoryRepository.findAll();
         assertThat(histories).hasSize(1)
-                .extracting("content")
-                .contains("총 매출 합계는 12000원입니다.");
+            .extracting("content")
+            .contains("총 매출 합계는 12000원입니다.");
     }
 
     private Order createPaymentCompletedOrder(LocalDateTime now, List<Product> products) {

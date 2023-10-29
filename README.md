@@ -158,3 +158,5 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
   - @Mock, @MockBean, @Spy, @SpyBean, @InjectMocks
   - BDDMockito
   - Classicist VS. Mockist
+
+- 테스트 수행도 비용이다. 환경 통합하기
