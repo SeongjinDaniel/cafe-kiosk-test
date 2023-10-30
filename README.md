@@ -160,3 +160,17 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
   - Classicist VS. Mockist
 
 - 테스트 수행도 비용이다. 환경 통합하기
+
+- 테스트에서만 필요한 메서드가 생겼는데 프로덕션 코드에서는 필요 없다면?
+  - 만들어도 된다. 하지만 **보수적**으로 접근하기!
+
+- 키워드 정리
+  - 테스트 하나 당 목적은 하나!
+  - 완벽한 제어
+  - 테스트 환경의 독립성, 테스트 간 독립성
+  - Test Fixture
+  - deleteAll(), deleteAllInBatch()
+  - @ParameterizedTest, @DynamicTest
+  - 수행 환경 통합하기(테스트 수행하는 것 자체가 비용이니까 서버가 적게 뜨는 횟수를 줄여라)
+  - private method test
+  - 테스트에서만 필요한 코드
