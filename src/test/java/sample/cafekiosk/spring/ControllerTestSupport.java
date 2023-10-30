@@ -6,9 +6,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import sample.cafekiosk.spring.api.controller.order.OrderController;
+import sample.cafekiosk.spring.api.controller.product.ProductController;
 import sample.cafekiosk.spring.api.service.order.OrderService;
+import sample.cafekiosk.spring.api.service.product.ProductService;
 
-@WebMvcTest(controllers = OrderController.class)
+@WebMvcTest(controllers = {
+    OrderController.class,
+    ProductController.class
+})
 public abstract class ControllerTestSupport {
 
     @Autowired
@@ -19,4 +24,7 @@ public abstract class ControllerTestSupport {
 
     @MockBean
     protected OrderService orderService;
+
+    @MockBean
+    protected ProductService productService;
 }
