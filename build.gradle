@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.7'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 group = 'sample'
@@ -12,6 +13,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    asciidoctorExt
 }
 
 repositories {
@@ -36,8 +38,51 @@ dependencies {
 
     // Guava
     implementation("com.google.guava:guava:32.1.3-jre")
+
+    // RestDocs
+    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+// 문서의 조각조각들을 snippets라고 부르면서 snippets에 대한 디렉토리를 정의함.
+// 스프링으로 빌드를 하고 jar 파일이 생기는데 jar 파일 안에 문서를 담을 건데 그 과정을 이제
+// 그래들 테스크로 정의를 하게 된다. 문서 조각(snippets)을 아래와 같이 지정한다.
+ext { // 전역 변수
+    snippetsDir = file('build/generated-snippets')
+}
+
+// test task에서는 테스트가 끝난 결과물을 snippetsDir 디렉토리로 지정함.
+test {
+    outputs.dir snippetsDir
+}
+
+// 그래들 task에서 dependsOn이라는 것은 작업 순서임.
+// 위에 test가 수행된 후 asciidoctor가 수행됨.
+// dependsOn test: 의존성이 있다는 의미임
+// 테스트가 수행된 후에는 snippet 디렉토리에 테스트 결과물들이 다 들어가 있음.
+// 그러면 거기 있는 결과물들을 받아가지고 이제 asciidoctor라는 task에서 문서를 만들어 줌.
+// inputs.dir snippetsDir : 결과물을 넣어줌
+// configurations 'asciidoctorExt': 확장 플러그인 설정
+asciidoctor {
+    inputs.dir snippetsDir
+    configurations 'asciidoctorExt'
+
+    dependsOn test
+}
+
+// Jar를 만드는 과정
+// dependsOn asciidoctor: asciidoctor를 의존 받음
+// 그래서 순서가 test, asciidoctor, booJar 순서로 실행됨
+// from("${asciidoctor.outputDir}") {  문서가 나오면
+//        into 'static/docs' // static/docs 하위에다가 복사를 하는 과정을 거침
+//    }
+bootJar {
+    dependsOn asciidoctor
+    from("${asciidoctor.outputDir}") {
+        into 'static/docs'
+    }
 }
