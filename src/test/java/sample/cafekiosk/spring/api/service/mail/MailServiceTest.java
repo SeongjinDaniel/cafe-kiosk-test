@@ -41,14 +41,19 @@ class MailServiceTest {
 //        MailSendClient mailSendClient = mock(MailSendClient.class);
 //        MailSendHistoryRepository mailSendHistoryRepository = mock(MailSendHistoryRepository.class);
 //        MailService mailService = new MailService(mailSendClient, mailSendHistoryRepository);
+
 //        when(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
 //                .thenReturn(true);
-        BDDMockito.given(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
-                .willReturn(true);
+
         // Spy 애노테이션을 쓰면 when을 쓰면 안된다.
 //        doReturn(true)
 //                .when(mailSendClient)
 //                .sendEmail(anyString(), anyString(), anyString(), anyString());
+
+        // 45번쨰줄에 when이라고 써있어서 이상하다 -> 그래서 BDDMockito를 만들었음.
+        // BddMockito는 Mockito를 상속하고 있고 그냥 BDD 스타일로 이름만 변경한 것.
+        BDDMockito.given(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
+            .willReturn(true);
 
         // when
         boolean result = mailService.sendMail("", "", "", "");
