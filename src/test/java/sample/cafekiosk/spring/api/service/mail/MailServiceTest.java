@@ -15,6 +15,11 @@ import sample.cafekiosk.spring.domain.history.mail.MailSendHistoryRepository;
 
 import static org.mockito.Mockito.*;
 
+/**
+ * Mock과 Spy의 차이
+ * - 예를 들어 mailSendClient에서 a, b, c의 메서드가 있는데 현재 지금 나는 sendEmail 메서드만 목으로 사용하고,
+ * 나머지 메서드 a, b, c도 실제 객체로 호출하게 할거라면 Spy를 사용하고 sendEmail만 mock으로 사용할 것이라면 Mock을 하면됨.
+ */
 @ExtendWith(MockitoExtension.class)
 class MailServiceTest {
 
@@ -25,6 +30,7 @@ class MailServiceTest {
     @Mock
     private MailSendHistoryRepository mailSendHistoryRepository;
 
+    // 위에 있는 Mock들을 DI처럼 주입함
     @InjectMocks
     private MailService mailService;
 

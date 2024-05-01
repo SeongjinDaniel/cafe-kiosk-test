@@ -35,7 +35,7 @@ public class Order extends BaseEntity {
     private List<OrderProduct> orderProducts = new ArrayList<>();
 
     @Builder
-    private Order(List<Product> products, OrderStatus orderStatus, LocalDateTime registeredDateTime, List<OrderProduct> orderProducts) {
+    private Order(List<Product> products, OrderStatus orderStatus, LocalDateTime registeredDateTime) {
         this.orderStatus = orderStatus;
         this.totalPrice = calculateTotalPrice(products);
         this.registeredDateTime = registeredDateTime;
