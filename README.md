@@ -85,6 +85,7 @@ user -> Presentation Layer Business Layer -> Persistence Layer -> DB
   - jdbc:h2:mem:~/cafeKioskApplication
 - 아래 와같이 사용해야함
   - jdbc:h2:tcp://localhost/~/cafeKioskApplication  <-- network 모드로 연결
+ 
 cf. https://atoz-develop.tistory.com/entry/H2-Database-%EC%84%A4%EC%B9%98-%EC%84%9C%EB%B2%84-%EC%8B%A4%ED%96%89-%EC%A0%91%EC%86%8D-%EB%B0%A9%EB%B2%95
 
 ### Persistence Layer
